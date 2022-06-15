@@ -7,12 +7,14 @@ export class ResultsPage {
   readonly resultTitle: Locator;
   readonly searchTabs: Locator;
   readonly searchPagination: Locator;
+  readonly courseTitle: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.resultTitle = page.locator('.Results-title');
     this.searchTabs = page.locator(tabSelector);
     this.searchPagination = page.locator('.SearchPagination .page');
+    this.courseTitle = page.locator('.CourseCard-content-title').first();
   }
 
   /**
@@ -26,7 +28,7 @@ export class ResultsPage {
    * This function counts how many pages has the current tab.
    * @return {number}
    */
-  async numPages() {
+  async numPages(): Promise<number> {
     const count = await this.searchPagination.count();
     if (count === 0) {
       return count + 1;
@@ -62,11 +64,21 @@ export class ResultsPage {
   }
 
   /**
-   * This function checks if there are tabs in the page
+   * This function checks if there are tabs in the page. If there arent any tab. there are no courses.
    * @return {boolean}
    */
   async isThereTabs(): Promise<boolean> {
     return (await this.searchTabs.count()) > 0;
+  }
+
+  /**
+   * This function selects the first course in the list and return his title
+   * @return {boolean}
+   */
+  async clickOnFirstCourse(): Promise<string> {
+    const title = await this.courseTitle.innerText();
+    await this.courseTitle.click();
+    return title;
   }
 }
 const tabSelector = '.SearchTabs-tabs .Tab';
