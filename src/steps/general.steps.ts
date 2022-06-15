@@ -1,7 +1,9 @@
 import { ICustomWorld } from '../support/custom-world';
 import { verifyPage } from '../utils/elements';
 import { MainPage } from '../pages/mainPage';
+import { ResultsPage } from '../pages/resultsPage';
 import { Given, When } from '@cucumber/cucumber';
+import { expect } from '@playwright/test';
 
 let mainPage: MainPage;
 
@@ -23,4 +25,18 @@ When('The user looks for {string}', async function (this: ICustomWorld, topic: s
   const page = verifyPage(this.page!);
   const mainPage = new MainPage(page);
   await mainPage.lookForTopic(topic);
+});
+
+/**
+ * This step checks if the searched topic has matches
+ * @param {ICustomWorld} this
+ */
+When('The user checks the existence of tabs', async function (this: ICustomWorld) {
+  const page = verifyPage(this.page!);
+  const resultPage = new ResultsPage(page);
+  try {
+    expect(await resultPage.isThereTabs()).toBeTruthy();
+  } catch (error) {
+    throw new Error('The searched topic has no matches');
+  }
 });
