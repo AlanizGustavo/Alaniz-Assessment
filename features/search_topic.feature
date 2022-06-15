@@ -1,3 +1,4 @@
+@search
 Feature: Search for a topic
     This feature searches for a topic in the search engine
 

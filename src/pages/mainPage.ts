@@ -35,6 +35,6 @@ export class MainPage {
   async lookForTopic(topic: string) {
     await this.searchBox.fill(topic);
     await this.searchBtn.click();
-    await this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
+    await this.page.waitForNavigation({ waitUntil: 'networkidle' });
   }
 }
