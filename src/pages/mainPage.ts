@@ -4,13 +4,11 @@ import 'dotenv/config';
 
 export class MainPage {
   readonly page: Page;
-  readonly loginBtn: Locator;
   readonly searchBox: Locator;
   readonly searchBtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.loginBtn = page.locator('.ButtonLogin');
     this.searchBox = page.locator('.NewSearch-input');
     this.searchBtn = page.locator('.NewSearch-button');
   }
@@ -37,5 +35,6 @@ export class MainPage {
   async lookForTopic(topic: string) {
     await this.searchBox.fill(topic);
     await this.searchBtn.click();
+    await this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
   }
 }
