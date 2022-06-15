@@ -29,12 +29,13 @@ Register on platzi platform
         https://platzi.com/
 
 Cases to automate using Playwright, Cucumber and Gherkin.
-- Login (do not upload credentials to the repo)
-- Login to "your routes" and create a new one.
+- Access the site
 - Search for a topic "X" in the top search engine .
-- Add "Z" courses from topic "X" to the "your route" (if already added, search for others below). If available, indicate that there are no courses to add.
-- Verify in "your routes" that the courses were indeed uploaded.
-- Create a test to clear the list of courses added to "your route".
+- Scroll through the top tags (Courses, Schools, Classes) and count the number of pages that each one has.
+- Access the first course, get and show how many opinions it has.
+- Access the Platzi blog and search for a "Y" topic.
+- Sort the list by "Most voted".
+- Get the first and return the name and the total number of Likes.
 
 ### Tester Application
 - You should have your own public repository with your code. Remember to make commits.
