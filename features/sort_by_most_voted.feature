@@ -1,14 +1,15 @@
-@post
-Feature: Search in blog
-    This Feature search into the blog by certain topic
+@post @mostVoted
+Feature: Sort posts by most voted
+    This feature sorts the posts according to the most voted post.
 
     Background: Navigation
         Given The user goes to the site
         And The user goes to the blog
 
-    Scenario Outline: The user filters blog by certain topic
+    Scenario Outline: The user filters posts by most voted
         When The user filters by "<Topic>"
-        Then The user should see the filtered posts
+        And The user filters by most voted
+        Then The user should see posts sorted by most voted
         Examples:
             | Topic     |
             | flutter   |
