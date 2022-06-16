@@ -118,7 +118,7 @@ export const config = {
     ```bash
     $ PWDEBUG=1 npx cucumber-ts --name "The user filters posts by most voted"
     ```
-- `PWVIDEO=1 npx cucumber-js --name "The user filters posts by most voted"` headless mode with video
+- `PWVIDEO=1 npx cucumber-js --name "Scenario name"` headless mode with video
     ```bash
     $ PWVIDEO=1 npx cucumber-ts --name "The user filters posts by most voted"
     ````
