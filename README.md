@@ -89,7 +89,7 @@ All of this commands will reproduce the test in headless mode. If you want to se
 
 ## Browser selection
 
-By default we will use webkit to avoid captcha. You can define an environment by modifying the channel attribute by the browser of your choice and replicate the selected browser in the browser attribute. Available options: chromium, firefox, webkit
+By default we will use webkit to avoid captcha. You can define an environment by modifying the channel attribute by the browser of your choice and replicate the selected browser in the browser attribute in `/src/support/config.ts`. Available options: chromium, firefox, webkit
 
 ```javascript
 const browserOptions: LaunchOptions = {
