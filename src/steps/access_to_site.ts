@@ -12,5 +12,14 @@ import 'dotenv/config';
 Then('The user should be in landing page', async function (this: ICustomWorld) {
   const page = verifyPage(this.page!);
   const mainPage = new MainPage(page);
-  expect(await mainPage.getUrl()).toContain(process.env.BASE_URL);
+  try {
+    expect(await mainPage.getUrl()).toContain(process.env.BASE_URL);
+  } catch (error) {
+    throw new Error('No platzy page found');
+  }
+  try {
+    expect(await mainPage.isThereLogo()).toBeTruthy();
+  } catch (error) {
+    throw new Error('No Platzy logo found');
+  }
 });

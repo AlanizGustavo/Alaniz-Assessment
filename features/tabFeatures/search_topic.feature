@@ -7,7 +7,7 @@ Feature: Search for a topic
 
     Scenario Outline: The user filters courses by certain topic
         When The user looks for "<Topic>"
-        Then The user should see the filtered courses
+        Then The user should see the filtered courses by "<Topic>"
         Examples:
             | Topic        |
             | react native |

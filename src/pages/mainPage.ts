@@ -7,6 +7,7 @@ export class MainPage {
   readonly searchBtn: Locator;
   readonly sandwich: Locator;
   readonly blogBtn: Locator;
+  readonly logoPlatzy: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -14,6 +15,11 @@ export class MainPage {
     this.searchBtn = page.locator('.NewSearch-button');
     this.blogBtn = page.locator('text="Blog"');
     this.sandwich = page.locator('.Menu-hamburger');
+    this.logoPlatzy = page.locator('.LogoHeader-name');
+  }
+
+  async isThereLogo(): Promise<boolean> {
+    return (await this.logoPlatzy.count()) > 0;
   }
 
   /**
