@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { expect, Locator, Page } from '@playwright/test';
-import 'dotenv/config';
 
 export class ResultsPage {
   readonly page: Page;

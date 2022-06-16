@@ -8,8 +8,10 @@ export class BlogPage {
   readonly searchTitle: Locator;
   readonly postList: Locator;
   readonly filter: Locator;
-  readonly mostVoted: Locator;
+  readonly mostVotedFilter: Locator;
   readonly rateNumber: Locator;
+  readonly mostVotedPostName: Locator;
+  readonly mostVotedPostRate: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,8 +20,10 @@ export class BlogPage {
     this.searchTitle = page.locator('.HeroSearch-copy');
     this.postList = page.locator('.ContributionList > article');
     this.filter = page.locator('.Filters-container');
-    this.mostVoted = page.locator('a.Filters-single:nth-child(3)');
-    this.rateNumber = page.locator('.Star-number');
+    this.mostVotedFilter = page.locator('a.Filters-single:nth-child(3)');
+    this.rateNumber = page.locator(selectorRate);
+    this.mostVotedPostName = page.locator('.Contribution-title').first();
+    this.mostVotedPostRate = page.locator(selectorRate).first();
   }
 
   /**
@@ -27,13 +31,15 @@ export class BlogPage {
    * @param {string} topic
    */
   async searchTopic(topic: string) {
-    await this.searchInput.fill(topic);
+    await this.page.waitForLoadState('networkidle');
+    await this.searchInput.fill(topic, { timeout: 0 });
     await this.searchIcon.click();
+    console.log(await this.searchInput.inputValue());
   }
 
   /**
    * This function returns a boolean depending on the existence of the search title
-   * @return boolean
+   * @return {boolean}
    */
   async isFiltered(): Promise<boolean> {
     return (await this.searchTitle.count()) > 0;
@@ -41,7 +47,7 @@ export class BlogPage {
 
   /**
    * This function returns a boolean depending on the existence of posts
-   * @return boolean
+   * @return {boolean}
    */
   async areTherePosts(): Promise<boolean> {
     return (await this.rateNumber.count()) > 0;
@@ -52,15 +58,15 @@ export class BlogPage {
    */
   async filterByMostVoted() {
     await this.filter.click();
-    await this.mostVoted.click();
+    await this.mostVotedFilter.click();
   }
 
   /**
    * This function check if the list of mos voted post is correctly sorted
-   * @return boolean
+   * @return {boolean}
    */
-  async isSort() {
-    const rateArray = await this.page.$$('.Star-number');
+  async isSort(): Promise<boolean> {
+    const rateArray = await this.page.$$(selectorRate);
 
     let success = true;
     let index = 0;
@@ -77,4 +83,26 @@ export class BlogPage {
     }
     return success;
   }
+
+  /**
+   * This function returns the name and the rate of the most voted post in the list
+   * @return {string}
+   */
+  async getMostVoted(topic: string): Promise<string> {
+    let postTitle;
+    let postRate;
+    try {
+      postTitle = await this.mostVotedPostName.innerText();
+    } catch (error) {
+      throw new Error('Post title missing');
+    }
+    try {
+      postRate = await this.mostVotedPostRate.innerText();
+    } catch (error) {
+      throw new Error('Rating number missing');
+    }
+
+    return `\nThe most voted post of the topic ${topic} is:\n${postTitle} with ${postRate} likes`;
+  }
 }
+const selectorRate = '.Star-number';
