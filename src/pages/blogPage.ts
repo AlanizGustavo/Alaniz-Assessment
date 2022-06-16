@@ -34,7 +34,6 @@ export class BlogPage {
     await this.page.waitForLoadState('networkidle');
     await this.searchInput.fill(topic, { timeout: 0 });
     await this.searchIcon.click();
-    console.log(await this.searchInput.inputValue());
   }
 
   /**

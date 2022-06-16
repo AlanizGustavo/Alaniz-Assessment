@@ -25,11 +25,8 @@
 
 ## Assignment given 
 
-Register on platzi platform
-        https://platzi.com/
-
 Cases to automate using Playwright, Cucumber and Gherkin.
-- Access the site
+- Access the site https://platzi.com/
 - Search for a topic "X" in the top search engine .
 - Scroll through the top tags (Courses, Schools, Classes) and count the number of pages that each one has.
 - Access the first course, get and show how many opinions it has.
@@ -78,14 +75,13 @@ $ npm install
 All of this commands will reproduce the test in headless mode. If you want to see all the steps en headed mode, set the `headless` attribute to `false` in `src/support/config.ts` file.
 
 - `npm run test` or `npx cucumber-js` runs all tests
-- `npm run test "<Scenario>"` or `npx cucumber-js --name "<Scenario>"`  run the single scenario
+- `npx cucumber-js --name "<Scenario>"`  run the single scenario
     ```bash
-    $ npm run test "login"
-    $ npx cucumber-js --name "login"
+    $ npx cucumber-js --name "The user filters posts by most voted"
     ```
 - `npx cucumber-js --tags "<your tags names>"` runs all test with the listed tags
     ```bash
-    $npx cucumber-js --tags "login"
+    $ npx cucumber-js --tags @post
     ```
 ---
 
@@ -93,15 +89,24 @@ All of this commands will reproduce the test in headless mode. If you want to se
 
 ## Browser selection
 
-By default we will use webkit to avoid captcha. You can define an envrionment variable called BROWSER and
-set the name of the browser. Available options: chromium, firefox, webkit
+By default we will use webkit to avoid captcha. You can define an environment by modifying the channel attribute by the browser of your choice and replicate the selected browser in the browser attribute. Available options: chromium, firefox, webkit
 
-On Linux and Mac you can write:
-```bash
-#To run all tests using Firefox
-$ BROWSER=firefox npm run test
-#or 
-$ BROWSER=firefox npx cucumber-js
+```javascript
+const browserOptions: LaunchOptions = {
+  slowMo: 0,
+  headless: true,
+  channel: 'webkit', //Modify this attribute 'webkit' by chromium or firefox
+  args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'],
+  firefoxUserPrefs: {
+    'media.navigator.streams.fake': true,
+    'media.navigator.permission.disabled': true,
+  },
+};
+
+export const config = {
+  browser: process.env.BROWSER || 'webkit', //Modify this attribute 'webkit' by chromium or firefox
+  browserOptions,
+};
 ```
 ---
 
@@ -111,11 +116,11 @@ $ BROWSER=firefox npx cucumber-js
 
 - `PWDEBUG=1 npx cucumber-js --name "Scenario name"` to run test step by step in debug mode
     ```bash
-    $ PWDEBUG=1 npx cucumber-ts --name "login"
+    $ PWDEBUG=1 npx cucumber-ts --name "The user filters posts by most voted"
     ```
-- `PWVIDEO=1 npx cucumber-js --name "Scenario name"` headless mode with video
+- `PWVIDEO=1 npx cucumber-js --name "The user filters posts by most voted"` headless mode with video
     ```bash
-    $ PWVIDEO=1 npx cucumber-ts --name "login"
+    $ PWVIDEO=1 npx cucumber-ts --name "The user filters posts by most voted"
     ````
 ---
 <div id="vsc"></div>
