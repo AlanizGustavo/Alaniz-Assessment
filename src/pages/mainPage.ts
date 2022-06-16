@@ -1,6 +1,5 @@
 import { urlMap } from '../pom';
 import { Locator, Page } from '@playwright/test';
-import 'dotenv/config';
 
 export class MainPage {
   readonly page: Page;
