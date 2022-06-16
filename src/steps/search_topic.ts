@@ -14,6 +14,6 @@ Then('The user should see the filtered courses', async function (this: ICustomWo
   try {
     await resultsPage.isFiltered();
   } catch (error) {
-    throw new Error('No results were displayed for the search query');
+    throw new Error('No results were displayed for the searched query');
   }
 });
