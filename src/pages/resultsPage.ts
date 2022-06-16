@@ -19,7 +19,10 @@ export class ResultsPage {
   /**
    * This function checks if there is a title of the searched topic
    */
-  async isFiltered() {
+  async isFiltered(topic: string) {
+    if ((await this.areThereTabs()) === false) {
+      console.log(`\nNo matches found for ${topic}`);
+    }
     return expect((await this.resultTitle!.count()) > 0).toBeTruthy();
   }
 
@@ -66,7 +69,7 @@ export class ResultsPage {
    * This function checks if there are tabs in the page. If there arent any tab. there are no courses.
    * @return {boolean}
    */
-  async isThereTabs(): Promise<boolean> {
+  async areThereTabs(): Promise<boolean> {
     return (await this.searchTabs.count()) > 0;
   }
 

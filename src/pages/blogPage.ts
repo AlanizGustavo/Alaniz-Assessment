@@ -40,7 +40,10 @@ export class BlogPage {
    * This function returns a boolean depending on the existence of the search title
    * @return {boolean}
    */
-  async isFiltered(): Promise<boolean> {
+  async isFiltered(topic: string): Promise<boolean> {
+    if ((await this.areTherePosts()) === false) {
+      console.log(`\nNo matches found for ${topic}`);
+    }
     return (await this.searchTitle.count()) > 0;
   }
 

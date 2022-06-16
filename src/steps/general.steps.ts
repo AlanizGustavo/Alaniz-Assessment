@@ -36,7 +36,7 @@ When('The user checks the existence of tabs', async function (this: ICustomWorld
   const page = verifyPage(this.page!);
   const resultPage = new ResultsPage(page);
   try {
-    expect(await resultPage.isThereTabs()).toBeTruthy();
+    expect(await resultPage.areThereTabs()).toBeTruthy();
   } catch (error) {
     throw new Error('The searched topic has no matches');
   }

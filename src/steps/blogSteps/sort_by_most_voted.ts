@@ -1,6 +1,6 @@
-import { ICustomWorld } from '../support/custom-world';
-import { verifyPage } from '../utils/elements';
-import { BlogPage } from '../pages/blogPage';
+import { ICustomWorld } from '../../support/custom-world';
+import { verifyPage } from '../../utils/elements';
+import { BlogPage } from '../../pages/blogPage';
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
