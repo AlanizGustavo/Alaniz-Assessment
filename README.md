@@ -72,9 +72,9 @@ $ npm install
 <div id="run-tests"></div>
 
 ## To run tests
-All of this commands will reproduce the test in headless mode. If you want to see all the steps en headed mode, set the `headless` attribute to `false` in `src/support/config.ts` file.
+All of this commands will reproduce the test in headless mode. If you want to see all the steps in headed mode, set the `headless` attribute to `false` in `src/support/config.ts` file.
 
-- `npm run test` or `npx cucumber-js` runs all tests
+- `npx cucumber-js` or `npm run test` runs all tests
 - `npx cucumber-js --name "<Scenario>"`  run the single scenario
     ```bash
     $ npx cucumber-js --name "The user filters posts by most voted"
@@ -176,6 +176,7 @@ It is recommended to use [Cucumber-Gherkin](https://marketplace.visualstudio.com
 
 ## To Generate test
 Run codegen and perform actions in the browser. Playwright will generate the code for the user interactions.
+
 `npx playwright codegen <url>`
 ```bash
 $ npx playwright codegen wikipedia.org
