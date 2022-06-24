@@ -55,7 +55,7 @@ Cases to automate using Playwright, Cucumber and Gherkin.
 
 ## Usage
 
-1. Clona el repositorio
+1. Clone the repository
 ```bash
 #Clonar con HTTPS
 $ git clone https://github.com/AlanizGustavo/assessment-Alaniz.git
