@@ -57,9 +57,9 @@ Cases to automate using Playwright, Cucumber and Gherkin.
 
 1. Clone the repository
 ```bash
-#Clonar con HTTPS
+#Clone with HTTPS
 $ git clone https://github.com/AlanizGustavo/assessment-Alaniz.git
-#Clonar con SSH
+#Clone with SSH
 $ git clone git@github.com:AlanizGustavo/assessment-Alaniz.git
 ```
 2. Run `npm install` command. After that you will be able to start running or creating your own test cases
