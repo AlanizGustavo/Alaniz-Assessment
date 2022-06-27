@@ -19,7 +19,7 @@ export class BlogPage {
     this.searchTitle = page.locator('.HeroSearch-copy');
     this.postList = page.locator('.ContributionList > article');
     this.filter = page.locator('.Filters-container');
-    this.mostVotedFilter = page.locator('a.Filters-single:nth-child(3)');
+    this.mostVotedFilter = page.locator('text=Más votados');
     this.rateNumber = page.locator(selectorRate);
     this.mostVotedPostName = page.locator('.Contribution-title').first();
     this.mostVotedPostRate = page.locator(selectorRate).first();
@@ -57,9 +57,12 @@ export class BlogPage {
   /**
    * This function uses the filter to sort by most voted
    */
-  async filterByMostVoted() {
+  async filterByMostVoted(topic: string) {
+    await this.page.screenshot({ path: `screenshots/${topic}BeforeMostVoted.png`, fullPage: true });
     await this.filter.click();
     await this.mostVotedFilter.click();
+
+    await this.page.screenshot({ path: `screenshots/${topic}AfterMostVoted.png`, fullPage: true });
   }
 
   /**

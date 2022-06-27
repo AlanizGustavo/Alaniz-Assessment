@@ -8,7 +8,7 @@ Feature: Sort posts by most voted
 
     Scenario Outline: The user filters posts by most voted
         When The user filters by "<Topic>"
-        And The user filters by most voted
+        And The user filters by most voted "<Topic>"
         Then The user should see posts sorted by most voted
         Examples:
             | Topic     |

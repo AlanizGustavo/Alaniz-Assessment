@@ -9,12 +9,12 @@ let blogPage: BlogPage;
  * This step filters the posts by most voted
  * @param {ICustomWorld} this
  */
-When('The user filters by most voted', async function (this: ICustomWorld) {
+When('The user filters by most voted {string}', async function (this: ICustomWorld, topic: string) {
   const page = verifyPage(this.page!);
   blogPage = new BlogPage(page);
   try {
     expect(await blogPage.areTherePosts()).toBeTruthy();
-    await blogPage.filterByMostVoted();
+    await blogPage.filterByMostVoted(topic);
   } catch (error) {
     throw new Error('No results were displayed for the searched query');
   }

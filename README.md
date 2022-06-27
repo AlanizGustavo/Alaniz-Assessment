@@ -1,27 +1,26 @@
-<h1 style="text-align: center;">QA NEST ASSESSMENT - PATAGONIAN 2022</h1>
+# QA NEST ASSESSMENT - PATAGONIAN 2022
 
-<center><img src="assets/nest.jpeg" alt="Nest Pingui" width="600"/></center>
+![Nest Pingui](assets/nest.jpeg)
 
 
 ### QA Automation Developer
       Alaniz Gustavo
 ---
 ## Index
-1. [Assignment given](#assignment)
+1. [Assignment given](#assignment-given)
 2. [Requirements](#requirements)
 3. [Usage](#usage)
-4. [Run tests](#run-tests)
-5. [Browser selection](#browser-selection)
-6. [Debugging Features](#debugging-features)
-7. [In Visual Studio Code](#vsc)
-8. [View report of the last run](#report)
-9. [Create your own test](#create-your-own-test)
-10. [Ignore a scenario](#ignore)
-11. [Test Code Generator](#codegen)
-12. [Documentation](#doc)
+4. [Test Cases Included](#test-cases-included)
+5. [Run tests](#to-run-tests)
+6. [Browser selection](#browser-selection)
+7. [Debugging Features](#debugging-features)
+8. [In Visual Studio Code](#in-visual-studio-code)
+9. [View report of the last run](#to-view-the-html-report-of-the-last-run)
+10. [Create your own test](#create-your-own-test)
+11. [Ignore a scenario](#to-ignore-a-scenario)
+12. [Test Code Generator](#to-generate-test)
+13. [Documentation](#annex---documentation)
 ---
-
-<div id="assignment"></div>
 
 ## Assignment given 
 
@@ -45,13 +44,19 @@ Cases to automate using Playwright, Cucumber and Gherkin.
 - Neatness, organisation, comments will be evaluated. Both in code and in the tasks.
 
 ---
-<div id="requirements"></div>
 
 ## Requirements:
 
 - node>=14
+```bash
+        # NVM instalation
+        $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        # install node v14.19.1
+        $ nvm install 14.19.1
+        # use node version v14.19.1
+        $ nvm use v14.19.1
+```
 ---
-<div id="usage"></div>
 
 ## Usage
 
@@ -67,10 +72,37 @@ $ git clone git@github.com:AlanizGustavo/assessment-Alaniz.git
 $ npm install
 ```
 3. Create a `.env` file following the `.env.example` structure.
+4. Run the command below to validate installation
+```bash
+$ PWDEBUG=1 npx cucumber-ts --name "Validate installation"
+```
 
 ---
-<div id="run-tests"></div>
+## Test Cases included
+```bash
+# Get to the website
+$ PWDEBUG=1 npx cucumber-js --name "The user is in landing page"
 
+# Search for a topic
+$ PWDEBUG=1 npx cucumber-js --name "The user filters courses by certain topic"
+
+# Count tabs pages
+$ PWDEBUG=1 npx cucumber-js --name "The user know how many pages has each tab in the topic serched"
+
+# Count opinions in a course
+$ PWDEBUG=1 npx cucumber-js --name "The user know how many opinions has the selected course"
+
+# Search in blog
+$ PWDEBUG=1 npx cucumber-js --name "The user filters blog by certain topic"
+
+# Sort posts by most voted
+$ PWDEBUG=1 npx cucumber-js --name "The user filters posts by most voted"
+
+# Show the most voted post
+$ PWDEBUG=1 npx cucumber-js --name "The user identify the most voted post in the list sorted by the topic" 
+```
+
+---
 ## To run tests
 All of this commands will reproduce the test in headless mode. If you want to see all the steps in headed mode, set the `headless` attribute to `false` in `src/support/config.ts` file.
 
@@ -84,8 +116,6 @@ All of this commands will reproduce the test in headless mode. If you want to se
     $ npx cucumber-js --tags @post
     ```
 ---
-
-<div id="browser-selection"></div>
 
 ## Browser selection
 
@@ -110,8 +140,6 @@ export const config = {
 ```
 ---
 
-<div id="debugging-features"></div>
-
 ## Debugging Features
 
 - `PWDEBUG=1 npx cucumber-js --name "Scenario name"` to run test step by step in debug mode
@@ -123,15 +151,12 @@ export const config = {
     $ PWVIDEO=1 npx cucumber-ts --name "The user filters posts by most voted"
     ````
 ---
-<div id="vsc"></div>
 
 ## In Visual Studio Code
 
 It is recommended to use [Cucumber-Gherkin](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete) extension. It will help with the features files
 
 ---
-<div id="report"></div>
-
 ## To view the html report of the last run
 
 - run the command
@@ -139,7 +164,6 @@ It is recommended to use [Cucumber-Gherkin](https://marketplace.visualstudio.com
     $ npm run report
     ```
 ---
-<div id="create-your-own-test"></div>
 
 ## Create your own test
 1. Create a new `test.feature` file in "feature" folder.
@@ -166,23 +190,19 @@ It is recommended to use [Cucumber-Gherkin](https://marketplace.visualstudio.com
 5. Run your test to check if it works    
 ---
 
-<div id="ignore"></div>
-
 ## To ignore a scenario
 
 - tag the scenario with `@ignore`
 ---
-<div id="codegen"></div>
 
 ## To Generate test
-Run codegen and perform actions in the browser. Playwright will generate the code for the user interactions.
+If you are not familiar with Playwright, run codegen and perform actions in the browser. Playwright will generate the code for the user interactions, where you can see the selectors used. 
 
 `npx playwright codegen <url>`
 ```bash
-$ npx playwright codegen wikipedia.org
+$ npx playwright codegen platzi.com
 ```
 ---
-<div id="doc"></div>
 
 ### Annex - Documentation
 
