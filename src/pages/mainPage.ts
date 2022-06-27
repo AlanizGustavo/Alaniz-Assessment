@@ -7,7 +7,7 @@ export class MainPage {
   readonly searchBtn: Locator;
   readonly sandwich: Locator;
   readonly blogBtn: Locator;
-  readonly logoPlatzy: Locator;
+  readonly logoPlatzi: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,18 +15,18 @@ export class MainPage {
     this.searchBtn = page.locator('.NewSearch-button');
     this.blogBtn = page.locator('text="Blog"');
     this.sandwich = page.locator('.Menu-hamburger');
-    this.logoPlatzy = page.locator('.LogoHeader-name');
+    this.logoPlatzi = page.locator('.LogoHeader-name');
   }
 
   async isThereLogo(): Promise<boolean> {
-    return (await this.logoPlatzy.count()) > 0;
+    return (await this.logoPlatzi.count()) > 0;
   }
 
   /**
    * This function gets you to the site
    */
   async goTo() {
-    await this.page.goto(urlMap.get('platzy'), { waitUntil: 'domcontentloaded', timeout: 0 });
+    await this.page.goto(urlMap.get('platzi'), { waitUntil: 'domcontentloaded', timeout: 0 });
   }
 
   /**

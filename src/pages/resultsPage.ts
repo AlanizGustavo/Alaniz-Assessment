@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { expect, Locator, Page } from '@playwright/test';
 
 export class ResultsPage {

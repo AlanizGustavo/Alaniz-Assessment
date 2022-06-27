@@ -15,11 +15,11 @@ Then('The user should be in landing page', async function (this: ICustomWorld) {
   try {
     expect(await mainPage.getUrl()).toContain(process.env.BASE_URL);
   } catch (error) {
-    throw new Error('No platzy page found');
+    throw new Error('No platzi page found');
   }
   try {
     expect(await mainPage.isThereLogo()).toBeTruthy();
   } catch (error) {
-    throw new Error('No Platzy logo found');
+    throw new Error('No Platzi logo found');
   }
 });

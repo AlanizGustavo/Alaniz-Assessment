@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Locator, Page } from '@playwright/test';
 
 export class CoursePage {
