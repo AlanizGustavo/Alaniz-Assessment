@@ -1,6 +1,6 @@
 import { setWorldConstructor, World, IWorldOptions } from '@cucumber/cucumber';
 import * as messages from '@cucumber/messages';
-import { BrowserContext, Page } from 'playwright';
+import { BrowserContext, Page } from '@playwright/test';
 
 export interface CucumberWorldConstructorParams {
   parameters: { [key: string]: string };

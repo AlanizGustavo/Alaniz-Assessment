@@ -8,7 +8,7 @@ import {
   FirefoxBrowser,
   webkit,
   WebKitBrowser,
-} from 'playwright';
+} from '@playwright/test';
 import { ITestCaseHookParameter } from '@cucumber/cucumber/lib/support_code_library_builder/types';
 import { ensureDir } from 'fs-extra';
 
