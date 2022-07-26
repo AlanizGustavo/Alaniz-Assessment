@@ -1,8 +1,13 @@
 FROM mcr.microsoft.com/playwright:v1.19.1-focal
 
 WORKDIR /app
-COPY . .
 RUN apt-get update
-RUN npm install -y
-#VOLUME /reports
+COPY package.json .
+COPY package-lock.json .
+
+# install using package-lock
+RUN npm ci
+
+COPY . .
+VOLUME /app/reports
 CMD [ "npx", "cucumber-js" ]

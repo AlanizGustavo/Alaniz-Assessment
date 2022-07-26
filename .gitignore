@@ -73,9 +73,6 @@ build
 dist/
 docs/
 
-#others
-package-lock.json
-
 #vscode
 
 .vscode/
