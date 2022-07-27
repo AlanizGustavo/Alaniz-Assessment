@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  test:
+    image: nest/automation:local
+    build: .
+    volumes:
+      - ./reports:/app/reports
+    entrypoint: npx cucumber-js --name "The user is in landing page"
+  
